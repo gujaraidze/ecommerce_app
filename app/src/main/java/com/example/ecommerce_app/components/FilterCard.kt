@@ -1,0 +1,54 @@
+package com.example.ecommerce_app.components
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.example.ecommerce_app.model.Data
+import com.example.ecommerce_app.model.Filter
+
+@Composable
+fun FilterCard(
+    filterItem: Filter,
+    onClick: () -> Unit
+) {
+    val shape = RoundedCornerShape(12.dp)
+    Box(
+        modifier = Modifier
+            .clip(shape)
+            .background(
+                if (filterItem.isSelected) Color.Black
+                else Color.White
+            )
+            .clickable {
+                onClick.invoke()
+            }
+            .padding(horizontal = 20.dp, vertical = 7.dp)
+    ) {
+        Text(
+            text = filterItem.title,
+            color = if (filterItem.isSelected) Color.White else Color.Black,
+            fontSize = 14.sp,
+            fontWeight = FontWeight(600)
+        )
+    }
+}
+
+@Composable
+@Preview(showBackground = true)
+fun FiltercardPreview() {
+    FilterCard(
+        filterItem = Data.filters[0],
+        onClick = {}
+    )
+}
