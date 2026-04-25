@@ -74,17 +74,18 @@ fun ProfileScreen(
         bottomBar = {
             BottomNav(navController)
         }
-    ) { innerpadding ->
+    ) { paddingValues ->
         Column(
             modifier = Modifier
-                .padding(innerpadding)
+                .padding(paddingValues)
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
         ) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 24.dp, vertical = 24.dp),
+                    .padding(horizontal = 24.dp, vertical = 24.dp)
+                    .height(60.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Image(
