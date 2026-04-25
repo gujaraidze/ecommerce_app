@@ -50,10 +50,10 @@ fun LikedProductCard(
                 painter = painterResource(clothingItem.image),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
+                alignment = Alignment.TopCenter,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(172.dp)
-
+                    .height(140.dp)
             )
             Box(
                 modifier = Modifier

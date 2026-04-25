@@ -14,7 +14,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -52,6 +55,7 @@ fun ItemDetailCard(
     modifier: Modifier = Modifier
 ) {
     var selectedSize by rememberSaveable { mutableStateOf("M") }
+    val pagerState = rememberPagerState(pageCount = { clothingItem.images.size })
 
     Surface(
         modifier = modifier,
@@ -65,16 +69,40 @@ fun ItemDetailCard(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(340.dp)
+                    .height(450.dp)
                     .clip(RoundedCornerShape(24.dp))
                     .background(Color(0xFFF5F5F5))
             ) {
-                Image(
-                    painter = painterResource(clothingItem.image),
-                    contentDescription = clothingItem.title,
-                    modifier = Modifier.fillMaxSize(),
-                    contentScale = ContentScale.Crop
-                )
+
+                HorizontalPager(
+                    state = pagerState,
+                    modifier = Modifier.fillMaxSize()
+                ) { page ->
+                    Image(
+                        painter = painterResource(clothingItem.images[page]),
+                        contentDescription = clothingItem.title,
+                        modifier = Modifier.fillMaxSize(),
+                        contentScale = ContentScale.Crop
+                    )
+                }
+
+                Row(
+                    modifier = Modifier
+                        .align(Alignment.BottomCenter)
+                        .padding(bottom = 12.dp),
+                    horizontalArrangement = Arrangement.spacedBy(6.dp)
+                ) {
+                    repeat(clothingItem.images.size) { iteration ->
+                        val isSelected = pagerState.currentPage == iteration
+                        Box(
+                            modifier = Modifier
+                                .size(if (isSelected) 10.dp else 8.dp)
+                                .clip(CircleShape)
+                                .background(if (isSelected) Color.White else Color.White.copy(alpha = 0.5f))
+                        )
+                    }
+                }
+
 
                 Surface(
                     modifier = Modifier
@@ -97,7 +125,7 @@ fun ItemDetailCard(
                 }
             }
 
-            Spacer(modifier = Modifier.height(14.dp))
+            Spacer(modifier = Modifier.height(12.dp))
 
             Text(
                 text = clothingItem.title,
@@ -132,7 +160,7 @@ fun ItemDetailCard(
                 )
             }
 
-            Spacer(modifier = Modifier.height(10.dp))
+            Spacer(modifier = Modifier.height(8.dp))
 
             Text(
                 text = itemDescription(clothingItem),
@@ -141,7 +169,7 @@ fun ItemDetailCard(
                 lineHeight = 20.sp
             )
 
-            Spacer(modifier = Modifier.height(18.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
             Text(
                 text = "Choose size",
@@ -150,7 +178,7 @@ fun ItemDetailCard(
                 color = Color(0xFF111111)
             )
 
-            Spacer(modifier = Modifier.height(12.dp))
+            Spacer(modifier = Modifier.height(10.dp))
 
             Row(
                 horizontalArrangement = Arrangement.spacedBy(10.dp)
@@ -238,7 +266,7 @@ private fun itemDescription(clothingItem: ClothingItem): String {
         ClothingType.HOODIES -> "This hoodie feels soft and relaxed, making it an easy layer for everyday outfits."
         ClothingType.PANTS -> "These pants are designed for a comfortable fit with a polished everyday look."
         ClothingType.SHOES -> "These shoes balance comfort and support for easy all-day wear."
-        ClothingType.ALL -> "This piece is made for an easy fit and comfortable all-day wear."
+        ClothingType.ALL -> ""
     }
 
     return "${clothingItem.title} is made for a clean everyday look. $categoryText"

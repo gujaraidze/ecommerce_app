@@ -22,10 +22,9 @@ fun FilterCard(
     filterItem: Filter,
     onClick: () -> Unit
 ) {
-    val shape = RoundedCornerShape(12.dp)
     Box(
         modifier = Modifier
-            .clip(shape)
+            .clip(RoundedCornerShape(12.dp))
             .background(
                 if (filterItem.isSelected) Color.Black
                 else Color.White
