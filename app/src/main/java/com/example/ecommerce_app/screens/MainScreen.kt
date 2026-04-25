@@ -109,6 +109,7 @@ fun MainScreen(
                                 value = search,
                                 onValueChange = { search = it },
                                 modifier = Modifier.fillMaxWidth(),
+                                singleLine = true,
                                 readOnly = true,
                                 placeholder = {
 
@@ -135,7 +136,6 @@ fun MainScreen(
                                         modifier = Modifier.size(20.dp)
                                     )
                                 },
-                                singleLine = true,
                                 shape = RoundedCornerShape(10.dp),
                                 colors = TextFieldDefaults.colors(
                                     focusedContainerColor = Color.White,
