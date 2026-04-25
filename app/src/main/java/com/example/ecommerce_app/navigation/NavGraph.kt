@@ -25,7 +25,7 @@ fun AppNavGraph() {
     val navController = rememberNavController()
     var clothes by remember { mutableStateOf(clothingItems) }
     var filters by remember { mutableStateOf(filters) }
-    var currentUser by remember { mutableStateOf(UserInfo("Guest", "guest@mail.com")) }
+    var currentUser by remember { mutableStateOf(UserInfo("Guest", "guest@mail.com", "00000000")) }
     val selectedFilter = filters.find { it.isSelected }
 
     val filteredClothes = clothes.filter { item ->
@@ -38,11 +38,7 @@ fun AppNavGraph() {
     }
 
 
-
-
-
-
-    NavHost(navController, startDestination = "signup") {
+    NavHost(navController, startDestination = "main") {
 
         composable("signup") {
             SignUpScreen(

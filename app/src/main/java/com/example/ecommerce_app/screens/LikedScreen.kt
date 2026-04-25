@@ -42,7 +42,7 @@ fun LikedScreen(
             modifier = Modifier
                 .padding(paddingValues)
         ) {
-            // ... (rest of the header code)
+
             Row(
                 modifier = Modifier
                     .fillMaxWidth()

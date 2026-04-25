@@ -67,7 +67,7 @@ fun SignUpScreen(
             )
             Spacer(Modifier.height(28.dp))
 
-            // Full Name
+
             Text("Full Name", fontSize = 14.sp, fontWeight = FontWeight.Medium, color = Color(0xFF111111))
             Spacer(Modifier.height(6.dp))
             OutlinedTextField(
@@ -86,7 +86,7 @@ fun SignUpScreen(
 
             Spacer(Modifier.height(16.dp))
 
-            // Email
+
             Text("Email", fontSize = 14.sp, fontWeight = FontWeight.Medium, color = Color(0xFF111111))
             Spacer(Modifier.height(6.dp))
             OutlinedTextField(
@@ -105,7 +105,7 @@ fun SignUpScreen(
 
             Spacer(Modifier.height(16.dp))
 
-            // Password
+
             Text("Password", fontSize = 14.sp, fontWeight = FontWeight.Medium, color = Color(0xFF111111))
             Spacer(Modifier.height(6.dp))
             OutlinedTextField(
@@ -138,7 +138,7 @@ fun SignUpScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(52.dp),
-                enabled = name.isNotEmpty() && email.isNotEmpty(),
+                enabled = name.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty(),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color.Black,
                     contentColor = Color.White,
@@ -146,7 +146,7 @@ fun SignUpScreen(
                     disabledContentColor = Color.White
                 ),
                 onClick = {
-                    onSignUpSuccess(UserInfo(name, email))
+                    onSignUpSuccess(UserInfo(name, email,password,true))
                     navController.navigate("main")
                 }) {
                 Text(
@@ -157,8 +157,8 @@ fun SignUpScreen(
                 )
 
             }
+        }
     }
-}
 }
 
 

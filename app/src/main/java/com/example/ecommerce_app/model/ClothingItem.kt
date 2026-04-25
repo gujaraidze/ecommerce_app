@@ -39,5 +39,7 @@ data class AccountMenuItem(
 
 data class UserInfo(
     val name: String,
-    val mail: String
+    val mail: String,
+    val password: String,
+    val isSignedUp: Boolean = false
 )
