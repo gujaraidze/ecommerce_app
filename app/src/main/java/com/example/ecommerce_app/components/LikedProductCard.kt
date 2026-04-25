@@ -83,12 +83,12 @@ fun LikedProductCard(
         Text(
             text = clothingItem.title,
             fontWeight = FontWeight.Bold,
-            fontSize = 17.sp,
-            maxLines = 1
+            fontSize = 19.sp,
+            maxLines = 2
         )
         Text(
             text = "$${clothingItem.price}",
-            fontSize = 15.sp,
+            fontSize = 17.sp,
             color = Color.Gray
         )
     }
