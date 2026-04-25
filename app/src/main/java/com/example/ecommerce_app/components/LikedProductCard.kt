@@ -27,14 +27,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ecommerce_app.model.ClothingItem
+import com.example.ecommerce_app.model.ClothingType
 
 
 @Composable
 fun LikedProductCard(
     clothingItem: ClothingItem,
     onFavoriteClick: () -> Unit,
-    onItemClick: (ClothingItem) -> Unit,
-    modifier: Modifier = Modifier
+    onItemClick: (ClothingItem) -> Unit
 ) {
     Column(
         modifier = Modifier.clickable {
@@ -50,7 +50,11 @@ fun LikedProductCard(
                 painter = painterResource(clothingItem.image),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
-                alignment = Alignment.TopCenter,
+                alignment = (
+                        if(clothingItem.clothingType == ClothingType.SHOES){
+                            Alignment.BottomCenter
+                        }else{
+                    Alignment.TopCenter}),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(140.dp)
