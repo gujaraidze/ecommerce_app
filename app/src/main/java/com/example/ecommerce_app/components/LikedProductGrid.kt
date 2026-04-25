@@ -16,20 +16,20 @@ fun LikedProductGrid(
     onFavoriteClick: (ClothingItem) -> Unit,
 
 ) {
+    val favoriteClothes = clothes.filter { it.isFavorite }
+
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
         contentPadding = PaddingValues(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp),
         horizontalArrangement = Arrangement.spacedBy(12.dp)
     ) {
-        items(clothes) { cloth ->
-            if (cloth.isFavorite) {
-                LikedProductCard(
-                    clothingItem = cloth,
-                    onItemClick = {onClick.invoke(cloth)},
-                    onFavoriteClick = { onFavoriteClick(cloth) }
-                )
-            }
+        items(favoriteClothes) { cloth ->
+            LikedProductCard(
+                clothingItem = cloth,
+                onItemClick = { onClick.invoke(cloth) },
+                onFavoriteClick = { onFavoriteClick(cloth) }
+            )
         }
     }
 }
