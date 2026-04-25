@@ -69,7 +69,7 @@ fun ItemDetailCard(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(450.dp)
+                    .height(460.dp)
                     .clip(RoundedCornerShape(24.dp))
                     .background(Color(0xFFF5F5F5))
             ) {
@@ -169,7 +169,7 @@ fun ItemDetailCard(
                 lineHeight = 20.sp
             )
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(8.dp))
 
             Text(
                 text = "Choose size",
@@ -209,7 +209,7 @@ fun ItemDetailCard(
                 }
             }
 
-            Spacer(modifier = Modifier.height(28.dp))
+            Spacer(modifier = Modifier.height(18.dp))
 
             Row(
                 modifier = Modifier.fillMaxWidth(),
