@@ -2,6 +2,7 @@ package com.example.ecommerce_app.screens
 
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
@@ -66,7 +67,8 @@ val supportItems = listOf(
 @Composable
 fun ProfileScreen(
     userInfo: UserInfo,
-    navController: NavController
+    navController: NavController,
+    onLogout: (UserInfo) -> Unit
 ) {
     Scaffold(
         bottomBar = {
@@ -130,7 +132,7 @@ fun ProfileScreen(
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            MenuSection {
+            MenuSection{
                 mainItems.forEachIndexed { index, item ->
                     ProfileItem(
                         icon = item.icon,
@@ -155,14 +157,20 @@ fun ProfileScreen(
                     }
                 }
             }
+                .clickable(onClick = {
+                onLogout(UserInfo("","","",false))
+            })
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            MenuSection {
+            MenuSection{
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 20.dp, vertical = 16.dp),
+                        .padding(horizontal = 20.dp, vertical = 16.dp)
+                        .clickable(onClick = {
+                            onLogout(UserInfo("","","",false))
+                        }),
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.spacedBy(14.dp)
                 ) {
@@ -229,7 +237,9 @@ fun ProfileItem(
 
 
 @Composable
-private fun MenuSection(content: @Composable ColumnScope.() -> Unit) {
+private fun MenuSection(
+    content: @Composable ColumnScope.() -> Unit
+) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
