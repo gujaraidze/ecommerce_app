@@ -34,7 +34,7 @@ fun ProductGrid(
         items(clothes) { cloth ->
             ProductCard(
                 clothingItem = cloth,
-                onItemClick = {onClick.invoke(cloth)},
+                onItemClick = {onClick(cloth)},
                 onFavoriteClick = { onFavoriteClick(cloth) }
             )
         }

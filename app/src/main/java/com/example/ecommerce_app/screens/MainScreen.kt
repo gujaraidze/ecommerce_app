@@ -1,6 +1,8 @@
 package com.example.ecommerce_app.screens
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -19,13 +21,21 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Tune
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -45,16 +55,18 @@ fun MainScreen(
     onFilterClick: (Filter) -> Unit,
     navController: NavController
 ) {
+    var search by remember { mutableStateOf("") }
+
     Scaffold(
+
         bottomBar = {
             BottomNav(navController)
         }
     ) { paddingValues ->
 
-
         ProductGrid(
             clothes = clothes,
-            onClick = { onItemClick.invoke(it) },
+            onClick = { onItemClick(it) },
             onFavoriteClick = onFavoriteClick,
             modifier = Modifier.padding(paddingValues),
             header = {
@@ -91,7 +103,6 @@ fun MainScreen(
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.spacedBy(12.dp)
                     ) {
-
                         Box(
                             modifier = Modifier
                                 .weight(1f)
@@ -99,30 +110,45 @@ fun MainScreen(
                                 .background(Color(0xFFF3F4F6), RoundedCornerShape(12.dp)),
                             contentAlignment = Alignment.CenterStart
                         ) {
-                            Row(
-                                modifier = Modifier.padding(horizontal = 16.dp),
-                                verticalAlignment = Alignment.CenterVertically
-                            ) {
-                                Icon(
-                                    imageVector = Icons.Default.Search,
-                                    contentDescription = "Search",
-                                    tint = Color.Gray,
-                                    modifier = Modifier.size(20.dp)
+                            OutlinedTextField(
+                                value = search,
+                                onValueChange = { search = it },
+                                modifier = Modifier.fillMaxWidth(),
+                                readOnly = true,
+                                placeholder = {
+
+                                    Text(
+                                        "Search for clothes...",
+                                        color = Color(0xFFBBBBBB)
+                                    )
+                                },
+
+                                leadingIcon = {
+                                    Icon(
+                                        imageVector = Icons.Default.Search,
+                                        contentDescription = "Search",
+                                        tint = Color.Gray,
+                                        modifier = Modifier.size(20.dp)
+                                    )
+                                },
+
+                                trailingIcon = {
+                                    Icon(
+                                        imageVector = Icons.Default.Mic,
+                                        contentDescription = "Voice Search",
+                                        tint = Color.Gray,
+                                        modifier = Modifier.size(20.dp)
+                                    )
+                                },
+                                singleLine = true,
+                                shape = RoundedCornerShape(10.dp),
+                                colors = TextFieldDefaults.colors(
+                                    focusedContainerColor = Color.White,
+                                    unfocusedContainerColor = Color.White,
+                                    focusedIndicatorColor = Color.Black,
+                                    unfocusedIndicatorColor = Color.Transparent
                                 )
-                                Spacer(modifier = Modifier.width(12.dp))
-                                Text(
-                                    text = "Search for clothes...",
-                                    color = Color.Gray,
-                                    fontSize = 15.sp,
-                                    modifier = Modifier.weight(1f)
-                                )
-                                Icon(
-                                    imageVector = Icons.Default.Mic,
-                                    contentDescription = "Voice Search",
-                                    tint = Color.Gray,
-                                    modifier = Modifier.size(20.dp)
-                                )
-                            }
+                            )
                         }
 
 
