@@ -157,9 +157,7 @@ fun ProfileScreen(
                     }
                 }
             }
-                .clickable(onClick = {
-                onLogout(UserInfo("","","",false))
-            })
+
 
             Spacer(modifier = Modifier.height(8.dp))
 
