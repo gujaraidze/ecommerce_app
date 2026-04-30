@@ -1,9 +1,11 @@
 package com.example.ecommerce_app.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -30,7 +32,12 @@ fun FilterCard(
             .clickable {
                 onClick.invoke()
             }
+            .border(
+                width = 2.dp,
+                color = if (filterItem.isSelected) Color.Black else Color(0xFFE6E6E6),
+                shape = RoundedCornerShape(12.dp))
             .padding(horizontal = 20.dp, vertical = 7.dp)
+
     ) {
         Text(
             text = filterItem.title,

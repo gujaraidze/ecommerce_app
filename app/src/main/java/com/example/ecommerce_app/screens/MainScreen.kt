@@ -19,6 +19,7 @@ import androidx.compose.material.icons.filled.Tune
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
@@ -94,7 +95,7 @@ fun MainScreen(
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(horizontal = 24.dp),
+                            .padding(horizontal = 8.dp),
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.spacedBy(12.dp)
                     ) {
@@ -137,11 +138,13 @@ fun MainScreen(
                                     )
                                 },
                                 shape = RoundedCornerShape(10.dp),
-                                colors = TextFieldDefaults.colors(
+                                colors = OutlinedTextFieldDefaults.colors(
+                                    focusedBorderColor = Color.Black,
+                                    unfocusedBorderColor =  Color(0xFFE6E6E6),
                                     focusedContainerColor = Color.White,
-                                    unfocusedContainerColor = Color.White,
-                                    focusedIndicatorColor = Color.Black,
-                                    unfocusedIndicatorColor = Color.Transparent
+                                    unfocusedContainerColor = Color.White
+
+
                                 )
                             )
                         }
