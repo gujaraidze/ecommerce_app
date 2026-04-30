@@ -8,7 +8,7 @@ import java.io.Serializable
 data class ClothingItem(
     val title: String,
     val price: Int,
-    @DrawableRes val images: List<Int>,
+    @field:DrawableRes val images: List<Int>,
     val isFavorite: Boolean,
     val clothingType: ClothingType
 ): Serializable {
