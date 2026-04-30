@@ -239,7 +239,9 @@ fun ItemDetailCard(
                         contentColor = Color.White
                     ),
                     shape = RoundedCornerShape(12.dp),
-                    modifier = Modifier.height(56.dp)
+                    modifier = Modifier
+                        .height(54.dp)
+                        .width(240.dp)
                 ) {
                     Icon(
                         imageVector = Icons.Default.ShoppingBag,
