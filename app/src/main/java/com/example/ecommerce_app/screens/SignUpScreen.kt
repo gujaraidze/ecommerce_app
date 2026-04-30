@@ -22,6 +22,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -76,11 +77,11 @@ fun SignUpScreen(
                 modifier = Modifier.fillMaxWidth(),
                 placeholder = { Text("Enter your full name", color = Color(0xFFBBBBBB)) },
                 shape = RoundedCornerShape(10.dp),
-                colors = TextFieldDefaults.colors(
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedBorderColor = Color.Black,
+                    unfocusedBorderColor =  Color(0xFFE6E6E6),
                     focusedContainerColor = Color.White,
-                    unfocusedContainerColor = Color.White,
-                    focusedIndicatorColor = Color.Black,
-                    unfocusedIndicatorColor = Color.Transparent
+                    unfocusedContainerColor = Color.White
                 )
             )
 
@@ -95,11 +96,11 @@ fun SignUpScreen(
                 modifier = Modifier.fillMaxWidth(),
                 placeholder = { Text("Enter your email address", color = Color(0xFFBBBBBB)) },
                 shape = RoundedCornerShape(10.dp),
-                colors = TextFieldDefaults.colors(
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedBorderColor = Color.Black,
+                    unfocusedBorderColor =  Color(0xFFE6E6E6),
                     focusedContainerColor = Color.White,
-                    unfocusedContainerColor = Color.White,
-                    focusedIndicatorColor = Color.Black,
-                    unfocusedIndicatorColor = Color.Transparent
+                    unfocusedContainerColor = Color.White
                 )
             )
 
@@ -120,11 +121,11 @@ fun SignUpScreen(
                         contentDescription = null
                     )
                 },
-                colors = TextFieldDefaults.colors(
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedBorderColor = Color.Black,
+                    unfocusedBorderColor =  Color(0xFFE6E6E6),
                     focusedContainerColor = Color.White,
-                    unfocusedContainerColor = Color.White,
-                    focusedIndicatorColor = Color.Black,
-                    unfocusedIndicatorColor = Color.Transparent
+                    unfocusedContainerColor = Color.White
                 )
             )
 

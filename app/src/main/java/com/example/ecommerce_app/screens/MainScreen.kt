@@ -143,8 +143,6 @@ fun MainScreen(
                                     unfocusedBorderColor =  Color(0xFFE6E6E6),
                                     focusedContainerColor = Color.White,
                                     unfocusedContainerColor = Color.White
-
-
                                 )
                             )
                         }
